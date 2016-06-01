@@ -78,7 +78,29 @@ void deleteItem(Node *head){
 	free(tmp);			//释放内存空间 
 }
 
-
+/**********		在指定元素后插入链表项		**************/
+void insertItem(Node *head){
+	Node *p;
+	p = head;
+	
+	int key;
+	cout<<endl<<"你想在哪个数后面插入新结点？"<<endl;
+	cin>>key;
+	
+	int add;
+	cout<<endl<<"你想加哪个数呢？"<<endl;
+	cin>>add;
+	
+	while((p != NULL) && (p->data != key))
+		p = p->next;
+	
+	
+	Node *tmp = new Node;
+	tmp->data = add;
+	tmp->next = p->next;
+	p->next = tmp;
+	
+} 
 
 int main()
 {
@@ -87,6 +109,9 @@ int main()
 	print_LinkedList(myHead); 
 	deleteItem(myHead);
 	print_LinkedList(myHead); 
+	insertItem(myHead);
+	print_LinkedList(myHead);
+	
 	
 	return 0;
 }
